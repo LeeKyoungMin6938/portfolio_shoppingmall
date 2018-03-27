@@ -1,0 +1,40 @@
+package com.nonage.controller.action;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.nonage.dao.OrderDAO;
+import com.nonage.dto.MemberVO;
+import com.nonage.dto.OrderVO;
+
+public class OrderListAction implements Action {
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "mypage/orderList.jsp";
+		HttpSession session = request.getSession();
+		MemberVO	 loginUser = (MemberVO)session.getAttribute("loginUser");
+		
+		if(loginUser==null) {
+			url="NonageServlet?command=login_form";			
+		}else {
+			OrderDAO orderDAO = OrderDAO.getInstance();
+			int oseq = Integer.parseInt(request.getParameter("oseq"));
+			ArrayList<OrderVO> orderList = orderDAO.listOrderById(loginUser.getId(), "1", oseq); // 미처리상태의 주문을 가져옴
+			int totalPrice=0;
+			for(OrderVO orderVO:orderList) {
+				totalPrice += orderVO.getPrice2()*orderVO.getQuantity();				
+			}
+			//넘길 데이터들을 다음페이지로 보내주는 작업
+			request.setAttribute("orderList", orderList);
+			request.setAttribute("totalPrice", totalPrice);
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+
+}

@@ -8,11 +8,11 @@ function go_cart() {
 	}
 }
 
-function go_cart_delete(){
+function go_cart_delete() {
 	var count=0;
 	
-	if(document.formm.cseq.length == underfined){
-		if(document.formm.cseq.checked == true){
+	if(document.formm.cseq.length==undefined){
+		if(document.formm.cseq.checked==true){
 			count++; //항목이 같지않은 장바구니 카운트 올려주는 것
 		}
 	}
@@ -28,7 +28,7 @@ function go_cart_delete(){
 	if(count==0){ //삭제처리
 		alert("삭제할 항목을 선택해주세요");
 	}else{
-		document.formm.action = "NonageServlet?command=cart_delete";
+		document.formm.action="NonageServlet?command=cart_delete";
 		document.formm.submit();
 	}
 }

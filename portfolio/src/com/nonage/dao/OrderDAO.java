@@ -157,4 +157,6 @@ public class OrderDAO {
 
 	
 	//관리자 모드에서 사용되는 메소드
+	
+	
 }

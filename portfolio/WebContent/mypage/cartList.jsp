@@ -40,7 +40,8 @@
 						<th colspan="2">총 액</th>
 						<th colspan="2"><fmt:formatNumber value="${totalPrice}"
 								type="currency" /><br></th>
-						<th><a href="#" onclick="go_cart_delete()"><h3>삭제하기</h3></a>
+						<th>
+							<a href="#" onclick="go_cart_delete()">삭제하기</a>
 						</th>
 					</tr>
 				</table>
@@ -57,9 +58,4 @@
 		</div>
 	</form>
 </article>
-
-
-
-
-
 <%@include file="../footer.jsp"%>

@@ -77,7 +77,7 @@ private CartDAO() {
 	}
 	
 	public void deleteCart(int cseq) {
-		String sql = "delete cart where cseq=?";
+		String sql = "delete from cart where cseq=?";
 	    
 	    Connection conn = null;
 	    PreparedStatement pstmt = null;
