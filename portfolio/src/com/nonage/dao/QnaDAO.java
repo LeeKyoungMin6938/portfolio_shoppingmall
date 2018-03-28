@@ -87,7 +87,7 @@ public class QnaDAO {
 	}
 	
 	
-	//게시판 글쓰기7
+	//게시판 글쓰기
 	public void insertqna(QnaVO qnaVO, String session_id) {
 		String sql = "insert into qna(qseq, subject, content, id)  values(qna_seq.nextval,?,?,?)";		
 		Connection conn = null;
@@ -96,9 +96,9 @@ public class QnaDAO {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, qnaVO.getSubject());
-			pstmt.setString(2, qnaVO.getContent());
+			pstmt.setString(2, qnaVO.getContent());	
 			pstmt.setString(3, session_id);			
-			pstmt.executeQuery();
+			pstmt.executeUpdate(); //update - insert,update,delete 등에 쓸때좋고, query 는 조회에 쓴다.
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {

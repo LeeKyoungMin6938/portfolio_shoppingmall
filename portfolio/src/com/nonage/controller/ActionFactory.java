@@ -19,6 +19,10 @@ import com.nonage.controller.action.OrderInsertAction;
 import com.nonage.controller.action.OrderListAction;
 import com.nonage.controller.action.ProductDetailAction;
 import com.nonage.controller.action.ProductKindAction;
+import com.nonage.controller.action.QnaListAction;
+import com.nonage.controller.action.QnaViewAction;
+import com.nonage.controller.action.QnaWriteAction;
+import com.nonage.controller.action.QnaWriteFormAction;
 import com.nonage.controller.action.idCheckFormAction;
 
 public class ActionFactory {
@@ -74,9 +78,18 @@ public class ActionFactory {
 	    	action = new OrderDetailAction();
 	    } else if(command.equals("order_all")) {
 	    	action = new OrderAllAction();
-	    }  
+	    }  else if(command.equals("qna_list")) {
+	    	action = new QnaListAction();
+	    }	else if(command.equals("qna_write_form")) {
+	    	action = new QnaWriteFormAction();
+	    }	else if(command.equals("qna_write")) {
+	    	action = new QnaWriteAction();
+	    } 	else if(command.equals("qna_view")) {
+	    	action = new QnaViewAction();
+	    }
 		
-		
+		//관리자
+			
 		return action;
 	}
 }
