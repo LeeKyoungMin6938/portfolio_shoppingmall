@@ -3,7 +3,18 @@ package com.nonage.controller;
 import com.nonage.admin.AdminIndexAction;
 import com.nonage.admin.AdminLoginAction;
 import com.nonage.admin.AdminLogoutAction;
+import com.nonage.admin.AdminMemberListAction;
+import com.nonage.admin.AdminOrderSaveAction;
+import com.nonage.admin.AdminOrderlListAction;
+import com.nonage.admin.AdminProductDetailAction;
 import com.nonage.admin.AdminProductListAction;
+import com.nonage.admin.AdminProductUpdateAction;
+import com.nonage.admin.AdminProductUpdateFormAction;
+import com.nonage.admin.AdminProductWriteAction;
+import com.nonage.admin.AdminProductWriteFormAction;
+import com.nonage.admin.AdminQnaDetailAction;
+import com.nonage.admin.AdminQnaListAction;
+import com.nonage.admin.AdminQnaResaveAction;
 import com.nonage.controller.action.Action;
 import com.nonage.controller.action.CartDeleteAction;
 import com.nonage.controller.action.CartInsertAction;
@@ -101,7 +112,30 @@ public class ActionFactory {
 	    	action = new AdminLogoutAction();
 	    }else if(command.equals("admin_product_list")) {
 	    	action = new AdminProductListAction();
+	    }else if (command.equals("admin_product_detail")) {
+		      action = new AdminProductDetailAction();
+	    }else if (command.equals("admin_product_write_form")) {
+	        action = new AdminProductWriteFormAction();
+	    }else if (command.equals("admin_product_write")) {
+	        action = new AdminProductWriteAction();
+	    }else if (command.equals("admin_product_update_form")) {
+	    	action = new AdminProductUpdateFormAction();
+	    }else if(command.equals("admin_product_update")) {
+	    	action = new AdminProductUpdateAction();
+	    }else if(command.equals("admin_order_list")) {
+	    	action = new AdminOrderlListAction();
+	    }else if(command.equals("admin_order_save")) {
+	    	action = new AdminOrderSaveAction();
+	    }else if(command.equals("admin_member_list")) {
+	    	action = new AdminMemberListAction();
+	    }else if(command.equals("admin_qna_list")) {
+	    	action = new AdminQnaListAction();
+	    }else if(command.equals("admin_qna_detail")) {
+	    	action = new AdminQnaDetailAction();
+	    }else if(command.equals("admin_qna_repsave")) {
+	    	action = new AdminQnaResaveAction();
 	    }
+	    	
 		
 		return action;
 	}

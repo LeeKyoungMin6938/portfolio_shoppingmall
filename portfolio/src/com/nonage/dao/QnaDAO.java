@@ -1,5 +1,6 @@
 package com.nonage.dao;
 
+import java.awt.print.Printable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -109,5 +110,53 @@ public class QnaDAO {
 	
 	
 	//관리자모드 메서드
+	public ArrayList<QnaVO> listAllQna(){
+		ArrayList<QnaVO> qnaList = new ArrayList<QnaVO>();
+		String sql = "select * from qna order by indate desc";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				QnaVO qnaVO = new QnaVO();
+				qnaVO.setQseq(rs.getInt("qseq"));
+				qnaVO.setSubject(rs.getString("subject"));
+				qnaVO.setContent(rs.getString("content"));
+				qnaVO.setId(rs.getString("id"));
+				qnaVO.setIndate(rs.getTimestamp("indate"));
+				qnaVO.setReply(rs.getString("reply"));
+				qnaVO.setRep(rs.getString("rep"));
+				qnaList.add(qnaVO);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt, rs);
+		}return qnaList;
+	}
 	
+	//게시판 수정
+	public void updateQna(QnaVO qnaVO) {
+		String sql = "update qna set reply=?, rep='2' where qseq=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, qnaVO.getReply());
+			pstmt.setInt(2, qnaVO.getQseq());
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
 }

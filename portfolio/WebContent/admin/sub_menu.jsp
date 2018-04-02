@@ -6,6 +6,6 @@
 	<li><a href="NonageServlet?command=admin_product_list">상품리스트</a></li>
 	<li><a href="NonageServlet?command=admin_order_list">주문리스트</a></li>
 	<li><a href="NonageServlet?command=admin_member_list">회원리스트</a></li>
-	<li><a href="NonageServlet?command=admin_qna_list">Q&amp;스트</a></li>
+	<li><a href="NonageServlet?command=admin_qna_list">Q&amp;A 리스트</a></li>
 </ul>
 </nav>
