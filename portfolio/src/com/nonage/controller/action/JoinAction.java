@@ -28,7 +28,7 @@ public class JoinAction implements Action {
 	    memberVO.setAddress(request.getParameter("addr1") 
 	    		+ request.getParameter("addr2"));
 	    memberVO.setPhone(request.getParameter("phone"));    
-	      
+
 	    session.setAttribute("id", request.getParameter("id"));    
 	    
 	    MemberDAO memberDAO = MemberDAO.getInstance();

@@ -24,6 +24,7 @@
 		<ul>
 			<c:choose>
 				<c:when test="${empty sessionScope.loginUser}">
+					<!-- 로그인 상태가 아닐경우 -->
 					<li><a href="NonageServlet?command=login_form"
 						style="width: 110px;">LOGIN(CUSTOMER)</a> <a
 						href="NonageServlet?command=admin_login_form"
